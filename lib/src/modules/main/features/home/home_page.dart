@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/config/routes/app_routes.gr.dart';
+import '../../../widgets/bottom_sheet.dart';
 import '../widgets/popular_now_widget.dart';
 import '../widgets/recom_widget.dart';
 import '../widgets/search_home_field.dart';
@@ -50,7 +51,19 @@ class _HomePageState extends State<HomePage> {
                       color: AppColors.grey.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(_paddingSmall)),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        // Для того, чтобы можно было настроить высоту
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20),
+                          ),
+                        ),
+                        builder: (context) => ReviewBottomSheet(),
+                      );
+                    },
                     icon: Icon(
                       Icons.notifications_none,
                       color: AppColors.black,
