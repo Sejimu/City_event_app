@@ -19,7 +19,7 @@ class _DashboardState extends State<Dashboard> {
       routes: const [
         HomeRoute(),
         SearchRoute(),
-        HomeRoute(),
+        FavouriteRoute(),
         HomeRoute(),
         HomeRoute(),
       ],
