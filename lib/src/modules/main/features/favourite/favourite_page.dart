@@ -34,7 +34,7 @@ class _FavouritePageState extends State<FavouritePage> {
           SliverList.separated(
             itemCount: 8,
             itemBuilder: (BuildContext context, int index) {
-              return FavouriteComponent();
+              return const FavouriteComponent();
             },
             separatorBuilder: (BuildContext context, int index) => 20.verticalSpace,
           )
