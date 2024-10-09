@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
           ),
           CustomRoute(
             page: FavouriteRoute.page,
-          )
+          ),
         ]),
 
         CustomRoute(

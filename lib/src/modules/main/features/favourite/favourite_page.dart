@@ -1,78 +1,119 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:clubcrafter/generated/l10n.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:clubcrafter/src/core/config/theme/app_text_styles.dart';
-import 'package:clubcrafter/src/core/utils/resources/resources.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/config/theme/app_colors.dart';
+import 'package:clubcrafter/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/config/theme/app_colors.dart';
+import '../../../../core/utils/resources/resources.dart';
 
 @RoutePage()
-class FavouritePage extends StatelessWidget {
+class FavouritePage extends StatefulWidget {
   const FavouritePage({super.key});
 
   @override
+  State<FavouritePage> createState() => _FavouritePageState();
+}
+
+class _FavouritePageState extends State<FavouritePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          S.of(context).favoriteFavorite,
-          style: AppTextStyles.s16w700Poppins.copyWith(color: AppColors.black),
-        ),
-        centerTitle: true,
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            centerTitle: true,
+            title: Text(
+              "Favourite",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 30), // Задаём нужную высоту отступа (можешь поменять на любой размер)
+          ),
+          SliverList.separated(
+            itemCount: 8,
+            itemBuilder: (BuildContext context, int index) {
+              return FavouriteComponent();
+            },
+            separatorBuilder: (BuildContext context, int index) => 20.verticalSpace,
+          )
+        ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 24.w),
-            padding: EdgeInsets.all(8.w),
-            decoration: BoxDecoration(
-                color: AppColors.green,
-                borderRadius: BorderRadius.circular(16.r)),
-            child: Row(
+    );
+  }
+}
+
+
+class FavouriteComponent extends StatefulWidget {
+  const FavouriteComponent({super.key});
+
+  @override
+  State<FavouriteComponent> createState() => _FavouriteComponentState();
+}
+
+class _FavouriteComponentState extends State<FavouriteComponent> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: SizedBox(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              Images.recom,
+              width: 85.w,
+              height: 70.h,
+            ),
+            16.horizontalSpace,
+             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  Images.event,
-                  scale: 3,
+                Text(
+                  "Satellite mega festival - 2023",
+                  style: context.textTheme.titleSmall!
+                      .copyWith(color: AppColors.black),
+                  softWrap: true,
                 ),
-                15.horizontalSpace,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                16.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Dance party at the top of the\ntown - 2022',
-                      softWrap: true,
-                      style: AppTextStyles.s14w700Poppins
-                          .copyWith(color: AppColors.black),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          size: 20.h,
+                        ),
+                        Text(
+                          "New York",
+                          style: context.textTheme.labelMedium!
+                              .copyWith(color: AppColors.grey),
+                        ),
+                      ],
                     ),
-                    20.verticalSpace,
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'New-York',
-                            style: AppTextStyles.s14w400Poppins
-                                .copyWith(color: AppColors.grey),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(2.h),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.r),
-                                color: const Color.fromARGB(255, 236, 149, 178)),
-                            child: Text(
-                              '30%',
-                            ),
-                          )
-                        ],
+                    80.horizontalSpace,
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5).r,
+                          color: AppColors.hotPink.withOpacity(0.1)),
+                      child: Padding(
+                        padding:
+                        REdgeInsets.symmetric(horizontal: 8, vertical: 4.5),
+                        child: Text(
+                          "\$30.00",
+                          style: context.textTheme.labelMedium!
+                              .copyWith(color: AppColors.hotPink),
+                        ),
                       ),
                     )
                   ],
                 )
               ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
