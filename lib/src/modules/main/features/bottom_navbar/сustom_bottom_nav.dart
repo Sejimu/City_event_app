@@ -21,7 +21,7 @@ class _DashboardState extends State<Dashboard> {
         SearchRoute(),
         FavouriteRoute(),
         HomeRoute(),
-        HomeRoute(),
+        ProfileRoute(),
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,

@@ -6,7 +6,7 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         // Dashboard
-        CustomRoute(page: Dashboard.page,  initial: true, children: [
+        CustomRoute(page: Dashboard.page, initial: true, children: [
           CustomRoute(
             page: HomeRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn,
@@ -17,6 +17,9 @@ class AppRouter extends RootStackRouter {
           ),
           CustomRoute(
             page: FavouriteRoute.page,
+          ),
+          CustomRoute(
+            page: ProfileRoute.page,
           ),
         ]),
 
@@ -37,12 +40,14 @@ class AppRouter extends RootStackRouter {
         // Intro
         CustomRoute(
           page: IntroRoute.page,
-
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
 
         CustomRoute(
             page: AllTicketsRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: ProfileRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
         CustomRoute(
             page: OrderDetailRoute.page,
