@@ -18,7 +18,7 @@ class _DashboardState extends State<Dashboard> {
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
-        SearchRoute(),
+        AllTicketsRoute(),
         FavouriteRoute(),
         HomeRoute(),
         ProfileRoute(),
