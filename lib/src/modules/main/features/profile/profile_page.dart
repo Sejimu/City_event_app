@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../widgets/cruft_button.dart';
+import '../edit_profile.dart';
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -15,6 +16,15 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    void navigateToEditPfp() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>  EditProfilePage(),
+        ),
+      );
+    }
+
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -48,19 +58,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 24.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
                           child: CruftButton(
                             text: 'Edit Profile',
+                            onPressed: navigateToEditPfp,
                           ),
                         ),
-                        SizedBox(height: 16),
-                        Text(
+                        const SizedBox(height: 16),
+                        const Text(
                           'About',
                           style: TextStyle(
                             fontSize: 25,
@@ -68,8 +79,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Text(
+                        const SizedBox(height: 8),
+                        const Text(
                           "We have a team but still missing a couple of people. Let's play together! "
                           "We have a team but still missing a couple of people. We have a team but still missing a couple of people.",
                           style: TextStyle(
