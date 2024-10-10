@@ -3,6 +3,8 @@ part of 'resources.dart';
 class Images {
   Images._();
 
+  static const String appLogo = 'assets/imgs/appLogo.png';
+  static const String avatarReplace = 'assets/imgs/avatar_replace.jpg';
   static const String detail = 'assets/imgs/detail.jpeg';
   static const String event = 'assets/imgs/event.png';
   static const String logo = 'assets/imgs/logo.png';
@@ -20,5 +22,4 @@ class Images {
   static const String secondOne = 'assets/imgs/secondOne.png';
   static const String secondThree = 'assets/imgs/secondThree.png';
   static const String secondTwo = 'assets/imgs/secondTwo.png';
-  static const String splash = 'assets/imgs/splash.png';
 }

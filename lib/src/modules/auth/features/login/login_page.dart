@@ -45,7 +45,7 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 120.w),
-              child: Image.asset(Images.logo, fit: BoxFit.fill,),
+              child: Image.asset(Images.appLogo, fit: BoxFit.fill,),
             ),
             30.verticalSpace,
             Text(
@@ -124,13 +124,13 @@ class _SignInPageState extends State<SignInPage> {
             10.verticalSpace,
             TransparentElevatedBtn(
               onPressed: () {},
-              icon: Images.logo,
+              icon: Images.appLogo,
               text: S.of(context).loginWithFacebook,
             ),
             10.verticalSpace,
             TransparentElevatedBtn(
               onPressed: () {},
-              icon: Images.logo,
+              icon: Images.appLogo,
               text: S.of(context).loginWithGoogle,
             ),
             49.verticalSpace,

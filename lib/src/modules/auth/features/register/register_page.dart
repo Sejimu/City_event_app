@@ -50,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               Padding(
                 padding: REdgeInsets.symmetric(horizontal: 120),
-                child: Image.asset(Images.logo),
+                child: Image.asset(Images.appLogo),
               ),
               30.verticalSpace,
               Text(
@@ -71,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _username,
                 textInputAction: TextInputAction.next,
                 textInputType: TextInputType.name,
-                prefixIcon: Svgs.icon,
+                prefixIcon: Svgs.userSquare,
                 isVisible: false,
               ),
               20.verticalSpace,
@@ -132,7 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
               10.verticalSpace,
               TransparentElevatedBtn(
                 onPressed: () {},
-                icon: Svgs.google,
+                icon: Svgs.group49,
                 text: S.of(context).signUpWithGoogle,
               ),
               20.verticalSpace,

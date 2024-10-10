@@ -8,7 +8,6 @@ class AppRouter extends RootStackRouter {
         // Dashboard
         CustomRoute(
           page: Dashboard.page,
-          initial: true,
           children: [
             CustomRoute(
               page: HomeRoute.page,
@@ -39,6 +38,8 @@ class AppRouter extends RootStackRouter {
         ),
     CustomRoute(
         page: SignUpRoute.page,
+        initial: true,
+
         transitionsBuilder: TransitionsBuilders.fadeIn),
 
         CustomRoute(
@@ -50,6 +51,7 @@ class AppRouter extends RootStackRouter {
 
         // Intro
         CustomRoute(
+
           page: IntroRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),

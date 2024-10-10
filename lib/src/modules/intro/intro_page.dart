@@ -135,7 +135,7 @@ class _IntroContent {
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    Images.logo,
+                    Images.appLogo,
                     color: AppColors.hotPink.withOpacity(1),
                     height: 30,
                   ),
@@ -181,7 +181,7 @@ class _IntroContent {
                           borderRadius: BorderRadius.circular(10).r,
                           border: Border.all(color: AppColors.hotPink)),
                       child: Image.asset(
-                        Images.logo,
+                        Images.appLogo,
                         height: 150.w,
                         width: 150.w,
                         fit: BoxFit.cover,
