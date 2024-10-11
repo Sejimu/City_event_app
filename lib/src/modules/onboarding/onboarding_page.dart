@@ -110,7 +110,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: CruftButton(
               onPressed: () {
                 if (_currentIndex == content.length - 1) {
-                  _goToSignIn();
+                  context.router.push(const Dashboard());
                 }
                 _controller.nextPage(
                     duration: const Duration(milliseconds: 400),
@@ -126,8 +126,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
       ),
     );
   }
-
-  void _goToSignIn() => context.router.replace(const SignInRoute());
 }
 
 List<String> _imagesOne = [

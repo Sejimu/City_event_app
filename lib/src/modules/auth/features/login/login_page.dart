@@ -70,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
             30.verticalSpace,
             CTextFormField(
               focusNode: _nodeOne,
-              hintText: S.of(context).textFieldEnterPassword,
+              hintText: S.of(context).textFieldEnterEmail,
               controller: _username,
               textInputAction: TextInputAction.next,
               textInputType: TextInputType.name,
@@ -85,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
               textInputAction: TextInputAction.done,
               textInputType: TextInputType.text,
               prefixIcon: Svgs.lock,
-              isVisible: true,
+              isVisible: false,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -101,6 +101,9 @@ class _SignInPageState extends State<SignInPage> {
                   try {
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: _username.text, password: _password.text);
+                    if (context.mounted) {
+                      context.router.push(const OnboardingRoute());
+                    }
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       log('No user found for that email.');

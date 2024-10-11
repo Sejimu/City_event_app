@@ -20,7 +20,6 @@ class _DashboardState extends State<Dashboard> {
         HomeRoute(),
         AllTicketsRoute(),
         FavouriteRoute(),
-        HomeRoute(),
         ProfileRoute(),
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
@@ -34,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
           bottomNavigationBar: BottomNavigationBar(
               elevation: 2,
               type: BottomNavigationBarType.fixed,
-              currentIndex: 2,
+              currentIndex: tabRouter.activeIndex,
               selectedItemColor: AppColors.hotPink,
               unselectedItemColor: AppColors.black.withOpacity(0.7),
               onTap: (value) {
@@ -54,11 +53,6 @@ class _DashboardState extends State<Dashboard> {
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.favorite,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      CupertinoIcons.settings,
                     ),
                     label: ""),
                 BottomNavigationBarItem(

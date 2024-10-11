@@ -95,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 textInputAction: TextInputAction.done,
                 textInputType: TextInputType.text,
                 prefixIcon: Svgs.lock,
-                isVisible: true,
+                isVisible: false,
               ),
               30.verticalSpace,
               CruftButton(
@@ -106,6 +106,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         email: _email.text,
                         password: _password.text,
                       );
+                      if (context.mounted) {
+                        context.router.push(const OnboardingRoute());
+                      }
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         log('The password provided is too weak.');

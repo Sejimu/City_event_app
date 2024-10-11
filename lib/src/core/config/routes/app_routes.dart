@@ -25,37 +25,32 @@ class AppRouter extends RootStackRouter {
               page: ProfileRoute.page,
               transitionsBuilder: TransitionsBuilders.fadeIn,
             ),
-
             CustomRoute(
                 page: AllTicketsRoute.page,
                 transitionsBuilder: TransitionsBuilders.fadeIn),
-
           ],
         ),
 
         CustomRoute(
           page: EventDetailRoute.page,
         ),
-    CustomRoute(
-        page: SignUpRoute.page,
-        initial: true,
-
-        transitionsBuilder: TransitionsBuilders.fadeIn),
+        CustomRoute(
+            page: SignUpRoute.page,
+            transitionsBuilder: TransitionsBuilders.fadeIn),
 
         CustomRoute(
             page: OnboardingRoute.page,
             transitionsBuilder: TransitionsBuilders.noTransition),
         CustomRoute(
+            initial: true,
             page: SignInRoute.page,
             transitionsBuilder: TransitionsBuilders.fadeIn),
 
         // Intro
         CustomRoute(
-
           page: IntroRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
-
 
         CustomRoute(
             page: ProfileRoute.page,
