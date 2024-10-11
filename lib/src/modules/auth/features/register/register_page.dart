@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/config/routes/app_routes.gr.dart';
 import '../widgets/custom_text_form_field.dart';
@@ -95,7 +98,25 @@ class _SignUpPageState extends State<SignUpPage> {
                 isVisible: true,
               ),
               30.verticalSpace,
-              CruftButton(onPressed: () {}, text: S.of(context).buttonSignup),
+              CruftButton(
+                  onPressed: () async {
+                    try {
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: _email.text,
+                        password: _password.text,
+                      );
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        log('The password provided is too weak.');
+                      } else if (e.code == 'email-already-in-use') {
+                        log('The account already exists for that email.');
+                      }
+                    } catch (e) {
+                      log(e.toString());
+                    }
+                  },
+                  text: S.of(context).buttonSignup),
               10.verticalSpace,
               Row(
                 children: [

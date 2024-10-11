@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623093826807",
+    "project_id": "diploma-67ed0",
+    "storage_bucket": "diploma-67ed0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623093826807:android:e06237831b1fd3061ebff2",
+        "android_client_info": {
+          "package_name": "com.dip.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6yTViic_OOaW926unWrzvyZZ99AH_eKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/config/routes/app_routes.gr.dart';
 import '../widgets/custom_text_form_field.dart';
@@ -45,7 +50,10 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 120.w),
-              child: Image.asset(Images.appLogo, fit: BoxFit.fill,),
+              child: Image.asset(
+                Images.appLogo,
+                fit: BoxFit.fill,
+              ),
             ),
             30.verticalSpace,
             Text(
@@ -78,7 +86,6 @@ class _SignInPageState extends State<SignInPage> {
               textInputType: TextInputType.text,
               prefixIcon: Svgs.lock,
               isVisible: true,
-              inputFormatters: [],
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -90,8 +97,17 @@ class _SignInPageState extends State<SignInPage> {
             ),
             30.verticalSpace,
             CruftButton(
-                onPressed: () {
-                  _goToIntro();
+                onPressed: () async {
+                  try {
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: _username.text, password: _password.text);
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'user-not-found') {
+                      log('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      log('Wrong password provided for that user.');
+                    }
+                  }
                 },
                 text: S.of(context).buttonLogin),
             10.verticalSpace,
@@ -129,7 +145,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
             10.verticalSpace,
             TransparentElevatedBtn(
-              onPressed: () {},
+              onPressed: signInWithGoogle,
               icon: Images.appLogo,
               text: S.of(context).loginWithGoogle,
             ),
@@ -158,5 +174,34 @@ class _SignInPageState extends State<SignInPage> {
 
   void _goToSignUp() => context.router.replace(const SignUpRoute());
 
-  void _goToIntro() => context.router.push(const IntroRoute());
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(
+            loginResult.accessToken?.tokenString ?? '');
+
+    // Once signed in, return the UserCredential
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  }
 }
