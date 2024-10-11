@@ -119,20 +119,20 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverToBoxAdapter(
               child: Column(
                 children: [
-                  SizedBox(
-                      height: context.height * 0.1,
-                      width: context.width - 40,
-                      child: ListView.separated(
-                        itemCount: Events.getEvent(context).length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (_, index) => EventBtn(
-                            onPressed: () {},
-                            text: Events.getEvent(context)[index].text,
-                            emoji: Events.getEvent(context)[index].emoji),
-                        separatorBuilder: (context, index) =>
-                            _paddingSmall.horizontalSpace,
-                      )),
+                  // SizedBox(
+                  //     height: context.height * 0.1,
+                  //     width: context.width - 40,
+                  //     child: ListView.separated(
+                  //       itemCount: Events.getEvent(context).length,
+                  //       scrollDirection: Axis.horizontal,
+                  //       shrinkWrap: true,
+                  //       itemBuilder: (_, index) => EventBtn(
+                  //           onPressed: () {},
+                  //           text: Events.getEvent(context)[index].text,
+                  //           emoji: Events.getEvent(context)[index].emoji),
+                  //       separatorBuilder: (context, index) =>
+                  //           _paddingSmall.horizontalSpace,
+                  //     )),
                   _paddingMedium.verticalSpace,
                   Row(
                     children: [
